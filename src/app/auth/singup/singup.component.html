@@ -1,0 +1,80 @@
+<div class="sing-up-box">
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()">
+        <h6>Create your account</h6>
+        <mat-form-field appearance="fill">
+            <mat-label>Name</mat-label>
+            <input matInput formControlName="name" placeholder="Enter your name">
+            <mat-error *ngIf="signupForm.controls['name'].hasError('required')">
+                Name is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['name'].hasError('maxlength')">
+                Name cannot exceed 100 characters
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Enter your email">
+            <mat-error *ngIf="signupForm.controls['email'].hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['email'].hasError('email')">
+                Enter a valid email
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['email'].hasError('maxlength')">
+                Email cannot exceed 100 characters
+            </mat-error>
+            <mat-error *ngIf="emailExistsError">
+                This email is already registered
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Mobile</mat-label>
+            <input matInput formControlName="mobile" placeholder="Enter your mobile number">
+            <mat-error *ngIf="signupForm.controls['mobile'].hasError('pattern')">
+                Mobile number can only contain numbers, "+", "-", or ","
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['mobile'].hasError('minlength')">
+                Mobile number must be at least 10 digits long
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password">
+            <mat-error *ngIf="signupForm.controls['password'].hasError('required')">
+                Password is required
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['password'].hasError('minlength')">
+                Password must be at least 8 characters
+            </mat-error>
+            <mat-error *ngIf="signupForm.controls['password'].hasError('maxlength')">
+                Password cannot exceed 30 characters
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Confirm Password</mat-label>
+            <input matInput type="password" formControlName="confirmPassword">
+            <mat-error *ngIf="signupForm.controls['confirmPassword'].hasError('required')">
+                Confirm password is required
+            </mat-error>
+            <mat-error *ngIf="passwordMismatchError">
+                Passwords do not match
+            </mat-error>
+        </mat-form-field>
+
+
+        <mat-checkbox formControlName="agreeTerms">Agree to terms and conditions</mat-checkbox>
+        <mat-error *ngIf="signupForm.controls['agreeTerms'].hasError('requiredTrue')">
+            You must agree to the terms and conditions
+        </mat-error>
+
+
+        <button mat-raised-button color="primary" type="submit" [disabled]="signupForm.invalid">Register</button>
+    </form>
+
+</div>

@@ -1,0 +1,27 @@
+.login-box {
+
+    height: 550px;
+    display: flex;
+    width: 100%;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(60, 60, 218, 0.668);
+    line-height: 0.2;
+    gap: 10px;
+
+    form {
+        display: flex;
+        flex-direction: column;
+        border: 1px solid black;
+        background-color: white;
+        padding: 15px;
+        // margin: auto;
+        border-radius: 5px;
+    }
+
+    .forgot-btn {
+        cursor: pointer;
+        color: white;
+    }
+}

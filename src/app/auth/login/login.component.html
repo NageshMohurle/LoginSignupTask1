@@ -1,0 +1,29 @@
+<div class="login-box">
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
+        <h6>Login to your Account</h6>
+        <mat-form-field appearance="fill">
+            <mat-label>Email</mat-label>
+            <input matInput formControlName="email" placeholder="Enter your email">
+            <mat-error *ngIf="loginForm.controls['email'].hasError('required')">
+                Email is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.controls['email'].hasError('email')">
+                Enter a valid email
+            </mat-error>
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" formControlName="password" placeholder="Enter your password">
+            <mat-error *ngIf="loginForm.controls['password'].hasError('required')">
+                Password is required
+            </mat-error>
+            <mat-error *ngIf="loginForm.controls['password'].hasError('minlength')">
+                Minimum 8 characters required
+            </mat-error>
+        </mat-form-field>
+
+        <button color="primary" type="submit">Login</button>
+    </form>
+    <a (click)="openForgotPasswordDialog()" class="forgot-btn">Forgot Password?</a>
+</div>
